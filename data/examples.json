@@ -1,0 +1,242 @@
+[
+  {
+    "text": "I lost my debit card",
+    "category": "lost_card"
+  },
+  {
+    "text": "My credit card was stolen",
+    "category": "lost_card"
+  },
+  {
+    "text": "Someone stole my bank card",
+    "category": "lost_card"
+  },
+  {
+    "text": "My payment card is missing",
+    "category": "lost_card"
+  },
+  {
+    "text": "I cannot find my debit card",
+    "category": "lost_card"
+  },
+  {
+    "text": "Please help with my stolen card",
+    "category": "lost_card"
+  },
+  {
+    "text": "I misplaced my credit card",
+    "category": "lost_card"
+  },
+  {
+    "text": "My wallet containing my card was stolen",
+    "category": "lost_card"
+  },
+  {
+    "text": "I need to report a missing card",
+    "category": "lost_card"
+  },
+  {
+    "text": "I lost my card yesterday",
+    "category": "lost_card"
+  },
+  {
+    "text": "ATM gave me no cash",
+    "category": "atm_issue"
+  },
+  {
+    "text": "Cash withdrawal failed",
+    "category": "atm_issue"
+  },
+  {
+    "text": "The ATM deducted money but gave no cash",
+    "category": "atm_issue"
+  },
+  {
+    "text": "ATM dispensed the wrong amount",
+    "category": "atm_issue"
+  },
+  {
+    "text": "I have an ATM withdrawal problem",
+    "category": "atm_issue"
+  },
+  {
+    "text": "Money was deducted during a failed withdrawal",
+    "category": "atm_issue"
+  },
+  {
+    "text": "The cash machine did not dispense money",
+    "category": "atm_issue"
+  },
+  {
+    "text": "I received less cash than requested",
+    "category": "atm_issue"
+  },
+  {
+    "text": "My ATM transaction failed",
+    "category": "atm_issue"
+  },
+  {
+    "text": "The ATM charged me without dispensing cash",
+    "category": "atm_issue"
+  },
+  {
+    "text": "I do not recognize this card payment",
+    "category": "card_dispute"
+  },
+  {
+    "text": "There is an unauthorized card charge",
+    "category": "card_dispute"
+  },
+  {
+    "text": "Someone used my card without permission",
+    "category": "card_dispute"
+  },
+  {
+    "text": "I found a fraudulent card transaction",
+    "category": "card_dispute"
+  },
+  {
+    "text": "I want to dispute a card payment",
+    "category": "card_dispute"
+  },
+  {
+    "text": "There is an unknown debit on my card",
+    "category": "card_dispute"
+  },
+  {
+    "text": "My card was charged incorrectly",
+    "category": "card_dispute"
+  },
+  {
+    "text": "I see a suspicious card transaction",
+    "category": "card_dispute"
+  },
+  {
+    "text": "I did not authorize this purchase",
+    "category": "card_dispute"
+  },
+  {
+    "text": "I need help with an unrecognized payment",
+    "category": "card_dispute"
+  },
+  {
+    "text": "I cannot log into my account",
+    "category": "login_issue"
+  },
+  {
+    "text": "I forgot my password",
+    "category": "login_issue"
+  },
+  {
+    "text": "My account login is failing",
+    "category": "login_issue"
+  },
+  {
+    "text": "I cannot access online banking",
+    "category": "login_issue"
+  },
+  {
+    "text": "I need account recovery help",
+    "category": "login_issue"
+  },
+  {
+    "text": "My login credentials are not working",
+    "category": "login_issue"
+  },
+  {
+    "text": "I cannot sign into my banking app",
+    "category": "login_issue"
+  },
+  {
+    "text": "I forgot my account passcode",
+    "category": "login_issue"
+  },
+  {
+    "text": "I am locked out of online banking",
+    "category": "login_issue"
+  },
+  {
+    "text": "I need to recover access to my account",
+    "category": "login_issue"
+  },
+  {
+    "text": "My bank transfer has not arrived",
+    "category": "transfer_issue"
+  },
+  {
+    "text": "I sent money but the recipient did not receive it",
+    "category": "transfer_issue"
+  },
+  {
+    "text": "My transfer is delayed",
+    "category": "transfer_issue"
+  },
+  {
+    "text": "The bank transfer is missing",
+    "category": "transfer_issue"
+  },
+  {
+    "text": "I need help tracing a transfer",
+    "category": "transfer_issue"
+  },
+  {
+    "text": "My payment transfer is pending",
+    "category": "transfer_issue"
+  },
+  {
+    "text": "Money was transferred but not received",
+    "category": "transfer_issue"
+  },
+  {
+    "text": "I have a problem with a bank transfer",
+    "category": "transfer_issue"
+  },
+  {
+    "text": "The recipient cannot see my transfer",
+    "category": "transfer_issue"
+  },
+  {
+    "text": "My transfer has not been completed",
+    "category": "transfer_issue"
+  },
+  {
+    "text": "I need general banking help",
+    "category": "general_support"
+  },
+  {
+    "text": "How can I contact bank support",
+    "category": "general_support"
+  },
+  {
+    "text": "I have a question about banking services",
+    "category": "general_support"
+  },
+  {
+    "text": "Where can I get customer assistance",
+    "category": "general_support"
+  },
+  {
+    "text": "I need information about my bank",
+    "category": "general_support"
+  },
+  {
+    "text": "How do I reach customer service",
+    "category": "general_support"
+  },
+  {
+    "text": "I need help with a general inquiry",
+    "category": "general_support"
+  },
+  {
+    "text": "Where can I find official support",
+    "category": "general_support"
+  },
+  {
+    "text": "I have a banking question",
+    "category": "general_support"
+  },
+  {
+    "text": "How do I contact a bank representative",
+    "category": "general_support"
+  }
+]

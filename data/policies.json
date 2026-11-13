@@ -1,0 +1,92 @@
+[
+  {
+    "id": "POL-01",
+    "title": "Lost or stolen payment card",
+    "category": "lost_card",
+    "content": "If a payment card is lost or stolen, contact the bank immediately through a verified official channel to request card blocking. Do not share your PIN, CVV, password, or OTP. Only the bank can confirm that a card has been blocked."
+  },
+  {
+    "id": "POL-02",
+    "title": "ATM cash withdrawal issue",
+    "category": "atm_issue",
+    "content": "If an ATM dispenses no cash or an incorrect amount, contact official bank support to report the transaction. Keep relevant transaction details for verification. Any investigation or refund must be confirmed by the bank."
+  },
+  {
+    "id": "POL-03",
+    "title": "Unrecognized card transaction",
+    "category": "card_dispute",
+    "content": "For an unrecognized card payment, contact verified bank fraud support promptly. Ask the bank about its official dispute procedure. Do not share sensitive authentication credentials."
+  },
+  {
+    "id": "POL-04",
+    "title": "Login and account recovery",
+    "category": "login_issue",
+    "content": "For ordinary login difficulties, use the bank's official account recovery process or contact verified support. If unauthorized account access is suspected, contact official bank security support immediately before attempting routine password recovery. Never disclose passwords, PINs, or OTPs."
+  },
+  {
+    "id": "POL-05",
+    "title": "Bank transfer issue",
+    "category": "transfer_issue",
+    "content": "If a customer transferred or sent money to another bank account and the recipient or beneficiary says they have not received the transfer, treat it as a possibly delayed or missing bank transfer. Ask the customer to review the available payment or transaction reference and recipient details through the bank's official app or authenticated channel. If the transfer is pending, delayed, failed, or missing, contact verified bank support to request an investigation. Only the bank can confirm whether the money arrived, was reversed, or was refunded. Do not promise a completion time or claim an action was taken."
+  },
+  {
+    "id": "POL-06",
+    "title": "General banking support",
+    "category": "general_support",
+    "content": "For banking questions not covered by a specific policy, contact verified official bank support. The demonstration assistant cannot access accounts, verify identity, or perform transactions."
+  },
+  {
+    "id": "POL-07",
+    "title": "Card delivery and arrival",
+    "category": "card_delivery",
+    "content": "If a customer has not received an expected payment card, they should check any delivery information available through the bank's official app or verified communication channels. If the card is delayed, missing, or its delivery status is unclear, contact official bank support for assistance. Delivery dates, tracking information, and card status must be confirmed by the bank. Do not claim that a card has been dispatched or delivered without verification."
+  },
+  {
+    "id": "POL-08",
+    "title": "Card payment failures",
+    "category": "card_payment_issue",
+    "content": "If a customer reports that a legitimate card payment was declined or their payment card is not working, they should check for any relevant information displayed in the bank's official app or verified communication channels. A payment may fail for different reasons, and the bank must verify the actual cause. If the issue persists or the reason is unclear, contact official bank support. Do not claim that a payment was completed, a card was activated, or a restriction was removed without verification. Never request a PIN, CVV, password, or OTP."
+  },
+  {
+    "id": "POL-09",
+    "title": "Credential disclosure and login security",
+    "category": "credential_security",
+    "content": "If a customer may have disclosed a password, passcode, PIN, CVV or one-time code, recommend immediate contact with verified bank security support. The bank must advise on credential replacement and protective steps. Never ask the customer to provide sensitive credentials to this demo. No protective account action has occurred here."
+  },
+  {
+    "id": "POL-10",
+    "title": "Refunds and reversals: general process",
+    "category": "refund_guidance",
+    "content": "For a missing refund or reversal, keep available transaction information and consult verified bank support for the applicable review process. Refund eligibility, current status, outcome, and completion timing require bank-side verification. This demo cannot see or confirm a refund."
+  },
+  {
+    "id": "POL-11",
+    "title": "Account restrictions and identity verification",
+    "category": "account_restriction",
+    "content": "For a restricted account or difficulty completing identity verification, contact the bank using a verified official channel to understand what checks apply. Only the bank can determine the reason, required documentation, whether restrictions can be lifted, and the current status. Never disclose a one-time code, password or PIN to this demo."
+  },
+  {
+    "id": "POL-12",
+    "title": "Updating customer profile details",
+    "category": "profile_update",
+    "content": "For changes to customer contact or profile details, use the bank’s verified support or authenticated banking channels to request guidance. Verification requirements and actual account changes depend on the bank. This fictional assistant cannot modify or confirm personal records."
+  },
+  {
+    "id": "POL-13",
+    "title": "Expired or replacement payment cards",
+    "category": "card_replacement",
+    "content": "If a card is expired, damaged, or needs replacement, contact the bank through verified channels to ask about the applicable replacement process. Issuance, eligibility, fees, delivery and activation status can only be confirmed by the bank. Never provide PIN, CVV or OTP to this demo."
+  },
+  {
+    "id": "POL-14",
+    "title": "Unrecognized or duplicate charges",
+    "category": "duplicate_charge",
+    "content": "For a duplicate or unrecognized card charge, verify available transaction information through the bank’s official channels and promptly request a review with bank support. A dispute investigation, fee treatment and potential reversal are determined by the bank; this assistant cannot confirm an outcome."
+  },
+  {
+    "id": "POL-15",
+    "title": "Unauthorized account withdrawals or transfers",
+    "category": "unauthorized_transaction",
+    "content": "If a customer reports money taken from an account without permission, treat the report as a possible unauthorized transaction. Promptly contact the bank through a verified official fraud or security channel to report the activity, request an investigation, and ask about available protective actions. Do not claim that a transaction has been reversed, funds recovered, or the account secured. Do not request credentials in this demonstration."
+  }
+]
