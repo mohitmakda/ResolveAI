@@ -3,3 +3,5 @@ pandas>=2.0,<3
 scikit-learn>=1.4,<2
 numpy>=1.26,<3
 openai>=1.30,<3
+
+sentence-transformers>=3.0,<6
