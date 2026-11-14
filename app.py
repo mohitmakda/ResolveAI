@@ -638,77 +638,63 @@ Write the customer-support draft:
 
 
 
-    payload = {
+    # OLLAMA_CLOUD_CHAT_V2: cloud uses Ollama's OpenAI-compatible chat API.
+    # The original guarded call site decides whether generation is permitted.
+    # Security-critical messages never reach this function through that path.
+    if OLLAMA_URL.startswith("https://ollama.com/"):
+        api_key = os.getenv("OLLAMA_API_KEY", "").strip()
+        if not api_key:
+            raise RuntimeError("Ollama Cloud API key is not configured in Streamlit secrets")
 
-        "model": OLLAMA_MODEL,
+        from openai import OpenAI, APIStatusError, APIConnectionError, APITimeoutError
 
-        "prompt": prompt,
-
-        "stream": False,
-
-        "options": {
-
-            "temperature": 0.1,
-
-            "num_predict": 400,
-
-        },
-
-    }
-
-
-
-    if OLLAMA_URL.startswith("https://ollama.com/") and not os.getenv("OLLAMA_API_KEY"):
-        raise RuntimeError("OLLAMA_API_KEY not configured in Streamlit secrets")
-
-    request = urllib.request.Request(
-
-        OLLAMA_URL,
-
-        data=json.dumps(payload).encode("utf-8"),
-
-        headers={"Content-Type": "application/json", **({"Authorization": "Bearer " + os.environ["OLLAMA_API_KEY"]} if OLLAMA_URL.startswith("https://ollama.com/") and os.getenv("OLLAMA_API_KEY") else {})},
-
-        method="POST",
-
-    )
-
-
-
-    try:
-
-        with urllib.request.urlopen(
-
-            request, timeout=180
-
-        ) as response:
-
-            result = json.load(response)
-
-
-
-    except urllib.error.URLError as exc:
-
-        raise RuntimeError(
-
-            "Ollama connection failed. "
-
-            "Check that Ollama is running."
-
-        ) from exc
-
-
-
-    answer = result.get("response", "").strip()
-
-
+        client = OpenAI(
+            base_url="https://ollama.com/v1",
+            api_key=api_key,
+            timeout=120.0,
+            max_retries=0,
+        )
+        try:
+            completion = client.chat.completions.create(
+                model=OLLAMA_MODEL,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.1,
+                max_tokens=400,
+            )
+        except APIStatusError as exc:
+            # Do not display request/response bodies: they may contain customer data.
+            raise RuntimeError(
+                f"Ollama Cloud returned HTTP {exc.status_code}. "
+                "Check model availability, API access, or usage limits."
+            ) from exc
+        except (APIConnectionError, APITimeoutError) as exc:
+            raise RuntimeError("Ollama Cloud is unreachable or timed out") from exc
+        answer = (completion.choices[0].message.content or "").strip()
+    else:
+        # Preserve local Ollama's native /api/generate behavior.
+        payload = {
+            "model": OLLAMA_MODEL,
+            "prompt": prompt,
+            "stream": False,
+            "options": {"temperature": 0.1, "num_predict": 400},
+        }
+        request = urllib.request.Request(
+            OLLAMA_URL,
+            data=json.dumps(payload).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=180) as response:
+                result = json.load(response)
+        except urllib.error.URLError as exc:
+            raise RuntimeError(
+                "Local Ollama connection failed; check that Ollama is running"
+            ) from exc
+        answer = (result.get("response") or "").strip()
 
     if not answer:
-
         raise RuntimeError("Ollama returned an empty response")
-
-
-
     return answer
 
 
