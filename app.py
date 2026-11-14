@@ -63,9 +63,9 @@ from core import (
 
 
 
-OLLAMA_URL = "http://localhost:11434/api/generate"
+OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434/api/generate")
 
-OLLAMA_MODEL = "llama3.2:3b"
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3.2:3b")
 
 
 
@@ -658,13 +658,16 @@ Write the customer-support draft:
 
 
 
+    if OLLAMA_URL.startswith("https://ollama.com/") and not os.getenv("OLLAMA_API_KEY"):
+        raise RuntimeError("OLLAMA_API_KEY not configured in Streamlit secrets")
+
     request = urllib.request.Request(
 
         OLLAMA_URL,
 
         data=json.dumps(payload).encode("utf-8"),
 
-        headers={"Content-Type": "application/json"},
+        headers={"Content-Type": "application/json", **({"Authorization": "Bearer " + os.environ["OLLAMA_API_KEY"]} if OLLAMA_URL.startswith("https://ollama.com/") and os.getenv("OLLAMA_API_KEY") else {})},
 
         method="POST",
 
@@ -877,7 +880,7 @@ with st.sidebar.expander("⚙️ Developer Settings", expanded=False):
 
 
     if llm_provider == "Ollama (Local)":
-        st.info("Local Ollama requires a running service on the same host. Cloud deployments should use Template or configured OpenAI.")
+        st.info("Ollama Cloud configured." if OLLAMA_URL.startswith("https://ollama.com/") else "Local Ollama requires a running service on the same host. Cloud deployments should use Template or a configured hosted API.")
 
 
 
