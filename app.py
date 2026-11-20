@@ -831,7 +831,7 @@ with st.sidebar.expander("⚙️ Developer Settings", expanded=False):
 
         "Response generation",
 
-        ["Template", "Ollama (Local)", "OpenAI"],
+        ["Template", "Groq Cloud", "Ollama (Local)", "OpenAI"],
 
     )
 
@@ -852,13 +852,18 @@ with st.sidebar.expander("⚙️ Developer Settings", expanded=False):
             value=os.getenv("OPENAI_API_KEY", ""),
 
         )
+    if llm_provider == "Groq Cloud":
+        api_key = os.getenv("GROQ_API_KEY", "").strip()
+        if not api_key:
+            st.warning("Configure GROQ_API_KEY in Streamlit Secrets.")
+
 
 
 
     llm_enabled = (
 
         llm_provider == "Ollama (Local)"
-
+        or (llm_provider == "Groq Cloud" and bool(api_key))
         or (llm_provider == "OpenAI" and bool(api_key))
 
     )
@@ -1432,7 +1437,16 @@ if page == "Support Assistant":
                                     query, docs[:1],
 
                                     hint, api_key,
-
+                                    model_name=(
+                                        os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
+                                        if llm_provider == "Groq Cloud"
+                                        else "gpt-4o-mini"
+                                    ),
+                                    base_url=(
+                                        "https://api.groq.com/openai/v1"
+                                        if llm_provider == "Groq Cloud"
+                                        else None
+                                    ),
                                 )
 
 

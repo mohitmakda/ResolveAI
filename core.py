@@ -210,13 +210,13 @@ def draft_template(question, docs, category):
 
 
 
-def draft_llm(question, docs, category, api_key, model_name='gpt-4o-mini'):
+def draft_llm(question, docs, category, api_key, model_name='gpt-4o-mini', base_url=None):
 
     from openai import OpenAI
 
     context = '\n'.join(f"[{p['id']}] {p['title']}: {p['content']}" for p in docs)
 
-    client = OpenAI(api_key=api_key, timeout=25)
+    client = OpenAI(api_key=api_key, timeout=25, base_url=base_url, max_retries=0)
 
     response = client.chat.completions.create(model=model_name, temperature=0, messages=[
 
