@@ -1499,30 +1499,30 @@ if page == "Support Assistant":
 
                     except Exception as exc:
 
-                        st.session_state.pop(
-
-                            "llm_answer", None
-
+                        # No unsafe or unverified model output is displayed.
+                        # This fallback does not claim to resolve the issue.
+                        policy_reference = (
+                            f" Reference: [{docs[0]['id']}]."
+                            if docs else ""
                         )
 
-                        st.session_state.pop(
-
-                            "llm_source", None
-
+                        fallback_answer = (
+                            "Automatic response generation is temporarily "
+                            "unavailable. We cannot verify your account "
+                            "or transaction status. Please contact your "
+                            "bank through a verified official support "
+                            "channel for assistance. No account action "
+                            "has been performed."
+                            + policy_reference
                         )
 
-                        st.session_state.pop(
+                        st.session_state["llm_answer"] = fallback_answer
+                        st.session_state["llm_source"] = "API fallback"
+                        st.session_state["llm_validation"] = None
 
-                            "llm_validation", None
-
-                        )
-
-                        st.error(
-
-                            "LLM request failed: "
-
-                            f"{type(exc).__name__}: {exc}"
-
+                        st.warning(
+                            "LLM service unavailable. Displaying "
+                            "deterministic fallback; human review required."
                         )
 
 
@@ -1553,7 +1553,14 @@ if page == "Support Assistant":
 
 
 
-                    if source == "Safety fallback":
+                    if source == "API fallback":
+
+                        st.warning(
+                            "Cloud LLM unavailable. "
+                            "Displaying a safe, non-generative response."
+                        )
+
+                    elif source == "Safety fallback":
 
                         st.warning(
 
