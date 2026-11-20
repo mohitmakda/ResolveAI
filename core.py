@@ -232,7 +232,43 @@ def draft_llm(question, docs, category, api_key, model_name='gpt-4o-mini', base_
 
     ])
 
-    return response.choices[0].message.content
+    answer = (response.choices[0].message.content or "").strip()
+
+    # Retry once if the model omitted the required retrieved-policy citation.
+    if docs:
+        required_citation = f"[{docs[0]['id']}]"
+
+        if required_citation not in answer:
+            retry = client.chat.completions.create(
+                model=model_name,
+                temperature=0,
+                messages=[
+                    {
+                        "role": "system",
+                        "content": (
+                            "You are a banking support drafting assistant. "
+                            "Use only the supplied fictional policy context. "
+                            "Never invent bank actions, fees, timelines, "
+                            "account status, or verification results. "
+                            "Never request passwords, PINs, CVVs or OTPs."
+                        ),
+                    },
+                    {
+                        "role": "user",
+                        "content": (
+                            f"Original customer query: {question}\\n"
+                            f"Approved policy: {context}\\n"
+                            f"Previous draft: {answer}\\n\\n"
+                            "Rewrite the response using only supported "
+                            "policy information. End with the exact line:\\n"
+                            f"Reference: {required_citation}"
+                        ),
+                    },
+                ],
+            )
+            answer = (retry.choices[0].message.content or "").strip()
+
+    return answer
 
 
 
